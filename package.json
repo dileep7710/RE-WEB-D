@@ -1,0 +1,25 @@
+{
+  "name": "rest_class",
+  "version": "1.0.0",
+  "description": "Web Development REST API Practice.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dileep7710/RE-WEB-D.git"
+  },
+  "keywords": [],
+  "author": "Dileep Yadav",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dileep7710/RE-WEB-D/issues"
+  },
+  "homepage": "https://github.com/dileep7710/RE-WEB-D#readme",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
+  }
+}
