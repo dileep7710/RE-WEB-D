@@ -3,3 +3,11 @@ node_modules/
 .env
 .git_backup
 
+
+BACKEND/
+EJSDIR/
+EXPRESSDIR/
+MISCELLIANCE/
+package.json
+package-lock.json
+
