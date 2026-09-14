@@ -94,7 +94,6 @@ app.patch("/user/:id", (req, res) => {
         res.redirect("/user");
       });
     }
-    res.send(user);
     });
 } catch (err) {
     console.log(err);
