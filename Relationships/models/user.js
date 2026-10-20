@@ -15,27 +15,24 @@ const userSchema = new Schema({
         {
             _id: false,
             location: String,
-            city: String,
+            city: String
         },
     ],
 });
-
 const User = mongoose.model("User", userSchema);
 
 const addUsers = async() => {
     let user1 = new User({
-        username: "sherlockholmes",
-        addresses: [
-        {
+        username: "sherlokholmes",
+        addresses: [{
             location: "221B Baker Street",
             city: "London"
-        }
-      ],
+        }]
     });
 
-    user1.addresses.push({location: "P32 wallStreet", city: "London"});
+    user1.addresses.push({location: "P32 WallStreet", city: "London"});
     let result = await user1.save();
     console.log(result);
-};
+}
 
 addUsers();
