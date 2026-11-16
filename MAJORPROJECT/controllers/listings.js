@@ -4,11 +4,6 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 
-module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings});
-};
-
 module.exports.renderNewForm = (req, res) => {
         res.render("listings/new.ejs");
 };
@@ -81,4 +76,21 @@ module.exports.destroyListing =  async (req, res) => {
     console.log(deletedListing);
     req.flash("success", "New Listing Deleted!");
     res.redirect("/listings");
+};
+
+// controllers/listings.js
+
+module.exports.index = async (req, res) => {
+    let { category } = req.query; // URL se query parameter read karega (e.g. ?category=mountains)
+    
+    let allListings;
+    if (category) {
+        // Agar category select ki hai, to sirf wahi category filter karo
+        allListings = await Listing.find({ category: category.toLowerCase() });
+    } else {
+        // Agar koi filter nahi hai, to saari listings show karo
+        allListings = await Listing.find({});
+    }
+
+    res.render("listings/index.ejs", { allListings, category });
 };

@@ -35,6 +35,25 @@
         <input name="listing[country]" placeholder="India" class="form-control" required>
          <div class="invalid-feedback">Country name should be valid </div>
     </div>
+    <!-- views/listings/new.ejs -->
+
+<div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <select name="listing[category]" class="form-select" required>
+        <option value="" disabled selected>Select a category</option>
+        <option value="trending">Trending</option>
+        <option value="rooms">Rooms</option>
+        <option value="iconic cities">Iconic Cities</option>
+        <option value="mountains">Mountains</option>
+        <option value="castles">Castles</option>
+        <option value="pools">Amazing Pools</option>
+        <option value="camping">Camping</option>
+        <option value="farms">Farms</option>
+        <option value="arctic">Arctic</option>
+        <option value="deserts">Deserts</option>
+    </select>
+    <div class="invalid-feedback">Please choose a category</div>
+</div>
 
     </div>
         
