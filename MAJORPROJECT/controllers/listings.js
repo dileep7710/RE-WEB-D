@@ -81,14 +81,28 @@ module.exports.destroyListing =  async (req, res) => {
 // controllers/listings.js
 
 module.exports.index = async (req, res) => {
-    let { category } = req.query; // URL se query parameter read karega (e.g. ?category=mountains)
+    let { category, q } = req.query;
     
     let allListings;
+
     if (category) {
-        // Agar category select ki hai, to sirf wahi category filter karo
         allListings = await Listing.find({ category: category.toLowerCase() });
+
+    } else if (q && q.trim() !== "") {
+        allListings = await Listing.find({
+            $or: [
+                { location: { $regex: q.trim(), $options: "i" } },
+                { country: { $regex: q.trim(), $options: "i" } },
+                { title: { $regex: q.trim(), $options: "i" } }
+            ]
+        });
+
+        if (allListings.length === 0) {
+            req.flash("error", "No destinations found for your search!");
+            return res.redirect("/listings");
+        }
+
     } else {
-        // Agar koi filter nahi hai, to saari listings show karo
         allListings = await Listing.find({});
     }
 
